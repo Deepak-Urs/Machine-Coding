@@ -146,4 +146,9 @@
   .addEmployee_create--submit:hover {
     background-color: var(--btn-hover);
   }
+
+  i {
+    font-weight: 600;
+    color: brown;
+  }
   /* Add Employee - END */

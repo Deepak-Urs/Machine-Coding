@@ -64,6 +64,8 @@ async function initilizer() {
         empData.id = employees[employees.length - 1].id + 1
         empData.age = new Date().getFullYear() - parseInt(empData.dob.slice(0,4),10)
         empData.imgUrl = empData.imageUrl || "https://cdn-icons.-png.flaticon.com/512/0/93/png"
+        //empData.address = employees[employees.length - 1].id + 1
+        console.log(empData);
         employees.push(empData);
 
         renderEmployees();
@@ -77,6 +79,18 @@ async function initilizer() {
         selectedEmployeeId = e.target.id;
         renderEmployees();
         renderSingleEmployee();
+      }
+
+      if(e.target.tagName == "I") {
+         employees = employees.filter((emp) => String(emp.id) !== e.target.parentNode.id)
+
+         if(String(selectedEmployeeId) === e.target.parentNode.id) {
+          selectedEmployeeId = employees[0]?.id || -1
+          selectedEmployee = employees[0] || {}
+          renderSingleEmployee()
+         }
+
+         renderEmployees()
       }
     });
   
@@ -100,11 +114,14 @@ async function initilizer() {
     };
   
     const renderSingleEmployee = () => {
+      if(selectedEmployeeId === -1) {
+        employeeInfo.innerHTML = "";
+        return
+      }
       employeeInfo.innerHTML = `
       <img src="${selectedEmployee.imageUrl}" />
-      <span>${selectedEmployee.firstName}</span>
-      <span>${selectedEmployee.address}</span>
-      <span>${selectedEmployee.email}</span>
+      <span>Name - ${selectedEmployee.firstName} ${selectedEmployee.firstName}</span>
+      <span>Salary - ${selectedEmployee.salary}</span>
       <span>Mobile - ${selectedEmployee.contactNumber}</span>
       <span>DOB - ${selectedEmployee.dob}</span>
       `;
