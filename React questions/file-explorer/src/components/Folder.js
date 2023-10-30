@@ -17,12 +17,12 @@ function Folder({ explorer }) {
         })
     }
 
-    const addNewFolder = (e) => {
+    const onAddNewFolder = (e) => {
         if(e.keyCode === 13 && e.target.value) {
-            //add logic
             setShowInput({...showInput, visible: false})
         }
     }
+
     if(explorer.isFolder) {
         return (<div style={{marginTop:5}}>
             <div className="folder" onClick={() => setExpand(!expand)}>
@@ -43,7 +43,7 @@ function Folder({ explorer }) {
                                 <input 
                                     type="text" 
                                     autoFocus 
-                                    onKeyDown={() => addNewFolder()}
+                                    onKeyDown={(e) => onAddNewFolder(e)}
                                     className="inputContainer__input"
                                     onBlur={() => setShowInput({...showInput, visible: false})}
                                 />
