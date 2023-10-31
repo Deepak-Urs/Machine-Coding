@@ -1,6 +1,7 @@
 import { useState } from "react";
 
-function Folder({ explorer }) {
+
+function Folder({ handleInsertNode, explorer }) {
     console.log(explorer);
     const [expand, setExpand] = useState(false)
     const [showInput, setShowInput] = useState({
@@ -19,6 +20,7 @@ function Folder({ explorer }) {
 
     const onAddNewFolder = (e) => {
         if(e.keyCode === 13 && e.target.value) {
+            handleInsertNode(explorer.id, e.target.value, showInput.isFolder)
             setShowInput({...showInput, visible: false})
         }
     }
@@ -51,13 +53,13 @@ function Folder({ explorer }) {
                         )
                     }
                     {explorer.items.map((exp) => {
-                        return <Folder key={exp.id} explorer={exp} />
+                        return <Folder handleInsertNode={handleInsertNode} key={exp.id} explorer={exp} />
                     })}
                 </div>
         </div>)
     }
     else {
-        return <span className="file"><span style={{fontWeight: 'bold'}}>¬</span> {explorer.name}</span>
+        return <span className="file"><span style={{fontWeight: 'bold'}}>¬ </span> {'  ' +explorer.name}</span>
     }
     
 }
