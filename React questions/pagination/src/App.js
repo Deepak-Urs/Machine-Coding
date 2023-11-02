@@ -24,13 +24,13 @@ function App() {
   }, [])
 
   const selectPageHandler = (selectedPage) => {
-    setPage(selectedPage)
+    if(selectedPage >= 1 && selectedPage <= products.length/5 && selectedPage !== page) setPage(selectedPage)
   }
 
   return (
     <div className="App"> 
       {
-        products.length ? 
+        products.length > 0 && 
         (
         <div className='products'>
           {
@@ -43,21 +43,21 @@ function App() {
               )
             })
           }
-          {
+          
+        </div>
+        ) 
+      }
+      {
             products.length > 0 && (
               <div className='pagination'>
-                <span> PREV </span>
+                <span className={page > 1 ? "" : "pagination__disable"} onClick={() => selectPageHandler(page-1)}> PREV </span>
                 {[...Array(products.length/5)].map((_, i) => {
-                  return <span key={i} onClick={() => selectPageHandler(i+1)}>{i+1}</span>
+                  return <span className={page === i + 1 ? "pagination__selected" : " "} key={i} onClick={() => selectPageHandler(i+1)}>{i+1}</span>
                 })}
-                <span> NEXT </span>
+                <span className={page < products.length / 5  ? "" : "pagination__disable"} onClick={() => selectPageHandler(page+1)}> NEXT </span>
               </div>
             )
           }
-        </div>
-        ) 
-        : (<div>No products to display</div>)
-      }
     </div>
   );
 }
