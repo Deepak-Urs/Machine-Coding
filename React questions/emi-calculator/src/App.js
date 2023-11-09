@@ -1,25 +1,38 @@
 import './App.css';
 import { useState } from 'react';
+import { tenureData } from './utils/constants';
 
 function App() {
   const [cost, setCost] = useState(0);
   const [interest, setInterest] = useState(0);
   const [fee, setFee] = useState(0);
-  const [downPayment, setdDownPayment] = useState(0);
+  const [downPayment, setDownPayment] = useState(0);
   const [tenure, setTenure] = useState(0);
   const [emi, setEmi] = useState(0);
 
-  const updateEMI = () => {
-
-  }
-
-  const updateDownPayment = () => {
-
-  }
 
   const calculateEMI = () => {
 
   }
+
+  const updateEMI = (e) => {
+    if(!cost) return
+
+    const dp = Number(e.target.value)
+    setDownPayment(dp.toFixed(0))
+
+    // calculate EMI and update it
+  }
+
+  const updateDownPayment = (e) => {
+    if(!cost) return
+
+    const emi = Number(e.target.value)
+    setEmi(emi.toFixed(0))
+
+    // calculate DownPayment and update it
+  }
+
 
   return (
     <div className="App">
@@ -30,17 +43,17 @@ function App() {
       <span className='title'>
         Total Cost of the Asset
       </span>
-      <input type="number" value={cost} onChange={(e) => setFee(e.target.value)} placeholder="Total Cost of the Asset" />
+      <input type="number" value={cost} onChange={(e) => setCost(e.target.value)} placeholder="Total Cost of the Asset" />
 
       <span className='title'>
         Interest Rate (in %)
       </span>
-      <input type="number" value={cost} onChange={(e) => setFee(e.target.value)} placeholder="Interest Rate (in %)" />
+      <input type="number" value={interest} onChange={(e) => setInterest(e.target.value)} placeholder="Interest Rate (in %)" />
 
       <span className='title'>
         Processing fee (in %)
       </span>
-      <input type="number" value={cost} onChange={(e) => setFee(e.target.value)} placeholder="Processing fee (in %)" />
+      <input type="number" value={fee} onChange={(e) => setFee(e.target.value)} placeholder="Processing fee (in %)" />
 
       <span className='title'>
       Down Payment
@@ -69,6 +82,15 @@ function App() {
       <span className='title'>
         Tenure
       </span>
+      <div className='tenureContent'>
+      {
+        tenureData.map(t => {
+          return (
+            <button className={`tenure ${t === tenure ? "selected" : ""}`} onClick={() => setTenure(t)}>{t}</button>
+          )
+        })
+      }
+      </div>
     </div>
   );
 }
