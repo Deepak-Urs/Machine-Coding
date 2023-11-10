@@ -1,5 +1,5 @@
 import './App.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { tenureData } from './utils/constants';
 
 function App() {
@@ -10,9 +10,31 @@ function App() {
   const [tenure, setTenure] = useState(0);
   const [emi, setEmi] = useState(0);
 
+  useEffect(() => {
+    if(!(cost > 0)) {
+      setDownPayment(0)
+      setEmi(0)
+    }
+    const emi = calculateEMI(downPayment);
+    setEmi(emi)
+  }, [tenure])
 
-  const calculateEMI = () => {
+  const calculateEMI = (downpayment) => {
+    if(!cost) return
 
+    const loanAmt = cost - downpayment;
+    const rateOfInterest = interest / 100;
+    const numOfYears = tenure /12;
+
+    const EMI = (loanAmt*rateOfInterest*(1+rateOfInterest)**numOfYears)/((1+rateOfInterest)**numOfYears)
+    return Number(EMI/12).toFixed(0) 
+  }
+
+  const calculateDP = () => {
+    if(!cost) return
+
+    const downPaymentPercent = 100 - (emi/calculateEMI(0)) * 100
+    return Number((downPaymentPercent/100)*cost).toFixed(0)
   }
 
   const updateEMI = (e) => {
@@ -21,7 +43,8 @@ function App() {
     const dp = Number(e.target.value)
     setDownPayment(dp.toFixed(0))
 
-    // calculate EMI and update it
+    const emi = calculateEMI(dp)
+    setEmi(emi)
   }
 
   const updateDownPayment = (e) => {
@@ -30,7 +53,8 @@ function App() {
     const emi = Number(e.target.value)
     setEmi(emi.toFixed(0))
 
-    // calculate DownPayment and update it
+    const dp = calculateDP(emi)
+    setDownPayment(dp)
   }
 
 
@@ -74,7 +98,7 @@ function App() {
         <input className='slider' type='range' min={calculateEMI(cost)} max={calculateEMI(0)} value={emi} onChange={updateDownPayment}/>
         <div className='labels'>
             <label>{calculateEMI(cost)}</label>
-            <label>{downPayment}</label>
+            <label>{emi}</label>
             <label>{calculateEMI(0)}</label>
         </div>
       </div>
