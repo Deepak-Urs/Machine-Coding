@@ -82,6 +82,10 @@ function App() {
       <span className='title'>
       Down Payment
       </span>
+      <span className='title' style={{ textDecoration: "underline"}}>
+        {" "}
+        Total Down Payment - {(Number(downPayment) + (cost - downPayment) * (fee/100)).toFixed(0)} 
+        </span>
       <div>
         <input className='slider' type='range' min={0} max={cost} value={downPayment} onChange={updateEMI}/>
         <div className='labels'>
@@ -94,6 +98,10 @@ function App() {
       <span className='title'>
         Loan per month
       </span>
+      <span className='title' style={{ textDecoration: "underline"}}>
+        {" "}
+        Total Loan Amount - {(emi*tenure).toFixed(0)} 
+        </span>
       <div>
         <input className='slider' type='range' min={calculateEMI(cost)} max={calculateEMI(0)} value={emi} onChange={updateDownPayment}/>
         <div className='labels'>
