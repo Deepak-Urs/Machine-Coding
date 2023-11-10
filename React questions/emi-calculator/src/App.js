@@ -1,6 +1,7 @@
 import './App.css';
 import { useEffect, useState } from 'react';
 import { tenureData } from './utils/constants';
+import { numberWithCommas } from './utils/config';
 
 function App() {
   const [cost, setCost] = useState(0);
@@ -57,6 +58,13 @@ function App() {
     setDownPayment(dp)
   }
 
+  const totalEMI = () => {
+    return numberWithCommas((emi*tenure).toFixed(0))
+  }
+
+  const totalDownPayment = () => {
+    return (Number(downPayment) + (cost - downPayment) * (fee/100)).toFixed(0)
+  }
 
   return (
     <div className="App">
@@ -84,13 +92,13 @@ function App() {
       </span>
       <span className='title' style={{ textDecoration: "underline"}}>
         {" "}
-        Total Down Payment - {(Number(downPayment) + (cost - downPayment) * (fee/100)).toFixed(0)} 
+        Total Down Payment - {totalDownPayment} 
         </span>
       <div>
         <input className='slider' type='range' min={0} max={cost} value={downPayment} onChange={updateEMI}/>
         <div className='labels'>
           <label>0%</label>
-          <label>{downPayment}</label>
+          <label>{numberWithCommas(downPayment)}</label>
           <label>100%</label>
         </div>
       </div>
@@ -100,14 +108,14 @@ function App() {
       </span>
       <span className='title' style={{ textDecoration: "underline"}}>
         {" "}
-        Total Loan Amount - {(emi*tenure).toFixed(0)} 
+        Total Loan Amount - {totalEMI()} 
         </span>
       <div>
         <input className='slider' type='range' min={calculateEMI(cost)} max={calculateEMI(0)} value={emi} onChange={updateDownPayment}/>
         <div className='labels'>
-            <label>{calculateEMI(cost)}</label>
-            <label>{emi}</label>
-            <label>{calculateEMI(0)}</label>
+            <label>{numberWithCommas(calculateEMI(cost))}</label>
+            <label>{numberWithCommas(emi)}</label>
+            <label>{numberWithCommas(calculateEMI(0))}</label>
         </div>
       </div>
 
