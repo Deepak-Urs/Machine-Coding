@@ -78,18 +78,21 @@ function App() {
         title={"Total Cost of Asset"}
         state={cost}
         setState={setCost}
+        name="cost"
       />
 
       <TextInput
         title={"Interest Rate (in %)"}
         state={interest}
         setState={setInterest}
+        name="interest"
       />
 
       <TextInput
         title={"Processing fee (in %)"}
         state={fee}
         setState={setFee}
+        name="fee"
       />
 
       <SliderInput
