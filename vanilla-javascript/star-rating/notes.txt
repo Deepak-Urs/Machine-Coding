@@ -1,0 +1,6 @@
+1. remember, 'ID' is used by JS file and 'CLASS' is used by CSS file wrt HTML
+2. data-<attribute> can be equivalent to value in HTML, @ JS, e.target.dataset.<attribute> to access the respective value
+3. document.quesrySelectorAll --> to select a dropdown/group of elements
+4. HTMLElement/classList --> to access respective html-element's class values
+5. document.getElementById("counter").innerText --> to access the text contents of respective html-element
+6. example addEventListeners --> click, mouseover, mouseleave
