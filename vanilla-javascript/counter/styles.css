@@ -1,0 +1,35 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.row {
+    margin: 2.5vh 0;
+}
+
+.add {
+    background-color: green;
+    padding: 1.5vh 1.5vw;
+    font-size: large;
+    font-weight: bold;
+    color: #fff;
+    border-radius: 5px;
+}
+
+.subtract {
+    background-color: red;
+    padding: 1.5vh 1.5vw;
+    font-size: large;
+    font-weight: bold;
+    color: #fff;
+    border-radius: 5px;
+}
+
+.reset {
+    background-color: yellow;
+    padding: 1.5vh 1.5vw;
+    font-size: large;
+    font-weight: bold;
+    border-radius: 5px;
+}
