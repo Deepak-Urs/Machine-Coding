@@ -77,3 +77,25 @@ body {
 .employees__names--item:hover, .selected {
     background-color: var(--btn);
 }
+
+.employees__single--info > img {
+    object-fit: contain;
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+}
+
+.employees__single--heading {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    font-size: xx-large;
+}
+
+.employees__single--info {
+    text-align: center;
+    margin: 5px 0;
+    /*display: flex;
+    text-align: center;
+    justify-content: center;*/
+}

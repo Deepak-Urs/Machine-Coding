@@ -9,13 +9,19 @@
     let selectedEmployeeId = employees[0].id;
     let selectedEmployee = employees[0];
 
-    const employeeList = document.querySelector(".employee__names--list")
-    const employeeInfo = document.querySelector(".employee__single--list")
+    const employeeList = document.querySelector(".employees__names--list")
+    const employeeInfo = document.querySelector(".employees__single--info")
 
     // Add Employee logic later
 
     //Select Employee Logic
-
+    employeeList.addEventListener('click', (e) => {
+        if(e.target.tagName === 'SPAN' && selectedEmployeeId !== parseInt(e.target.id)) {
+            selectedEmployeeId = e.target.id;
+            renderEmployees();
+            renderSingleEmployee()
+        }
+    })
 
 
     const renderEmployees = () => {
@@ -39,5 +45,18 @@
     }
 
     //render individual employee
+
+    const renderSingleEmployee = () => {
+        employeeInfo.innerHTML = `<img src="${selectedEmployee.imageUrl} alt="emp-img-${selectedEmployee.firstName}-${selectedEmployee.lastName}" />
+        <div class="employees__single--heading">${selectedEmployee.firstName} ${selectedEmployee.lastName}</div>
+        <div class="employees__single--info">Address - ${selectedEmployee.address}</div>
+        <div class="employees__single--info">Email - ${selectedEmployee.email}</div>
+        <div class="employees__single--info">Contact No. - ${selectedEmployee.contactNumber}</div>
+        <div class="employees__single--info">DOB - ${selectedEmployee.dob}</div>
+        `
+    }
+
+
+    if(selectedEmployee) renderSingleEmployee();
     renderEmployees()
 })()
