@@ -1,4 +1,4 @@
-// immediately invoked function expression --> IIF
+// immediately invoked function expression --> IIFE
 (async function () {
     const data = await fetch('./data.json')
     const res = await data.json()
@@ -21,6 +21,7 @@
     const renderEmployees = () => {
         employeeList.innerHTML = ""
         employees.forEach(emp => {
+            //creating a span element
             const employee = document.createElement("span");
             employee.classList.add("employees__names--item");
 
