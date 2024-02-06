@@ -64,6 +64,16 @@
             renderEmployees();
             renderSingleEmployee()
         }
+
+        if(e.target.tagName === 'I') {
+            employees = employees.filter(emp => String(emp.id) != e.target.parentNode.id)
+            if(String(selectedEmployeeId) == e.target.parentNode.id) {
+                selectedEmployeeId = employees[0]?.id || -1;
+                renderSingleEmployee()
+            }
+            renderEmployees();
+        }
+
     })
 
 
@@ -90,6 +100,11 @@
     //render individual employee
 
     const renderSingleEmployee = () => {
+        if(selectedEmployeeId === -1) {
+            employeeInfo.innerHTML = ""
+            return
+        }
+
         employeeInfo.innerHTML = `<img src="${selectedEmployee.imageUrl} alt="emp-img-${selectedEmployee.firstName}-${selectedEmployee.lastName}" />
         <div class="employees__single--heading">${selectedEmployee.firstName} ${selectedEmployee.lastName}</div>
         <div class="employees__single--info">Address - ${selectedEmployee.address}</div>
