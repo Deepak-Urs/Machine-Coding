@@ -59,10 +59,29 @@
 
     //Select Employee Logic
     employeeList.addEventListener('click', (e) => {
-        if(e.target.tagName === 'SPAN' && selectedEmployeeId !== parseInt(e.target.id)) {
+        if(e.target.tagName === 'SPAN' && e.target.className == "employeeDelete" && selectedEmployeeId !== parseInt(e.target.id)) {
             selectedEmployeeId = e.target.id;
             renderEmployees();
             renderSingleEmployee()
+        }
+
+        if(e.target.tagName === 'I' && e.target.className == "employeeEdit") {
+            selectedEmployeeId = e.target.parentNode.id;
+            let empEditData = employees.filter(emp => emp.id === parseInt(selectedEmployeeId))
+            if(empEditData && empEditData[0]) {
+                let data = empEditData[0]
+                addEmployeeModal.style.display = "flex";
+                document.getElementById('firstName').value = data.firstName
+                document.getElementById('lastName').value = data.lastName
+                document.getElementById('address').value = data.address
+                //document.getElementById('age').value = data.age
+                document.getElementById('contactNumber').value = data.contactNumber
+                document.getElementById('dob').value = new Date(data.dob)
+                document.getElementById('email').value = data.email
+                document.getElementById('imageUrl').value = data.imageUrl
+                document.getElementById('salary').value = data.salary
+                
+            }
         }
 
         if(e.target.tagName === 'I') {
@@ -90,7 +109,7 @@
             }
 
             employee.setAttribute("id", emp.id);
-            employee.innerHTML = `${emp.firstName} ${emp.lastName} <i class="employeeDelete">❌</i>`
+            employee.innerHTML = `${emp.firstName} ${emp.lastName} <i class="employeeEdit">✏️</i> <i class="employeeDelete">❌</i>`
 
             employeeList.append(employee)
 
