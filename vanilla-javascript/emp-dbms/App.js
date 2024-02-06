@@ -4,6 +4,7 @@
     const res = await data.json()
     console.log(res);
     let employees = res;
+    let showModal = false
 
     // pre-fetch 1st user data
     let selectedEmployeeId = employees[0].id;
@@ -11,8 +12,24 @@
 
     const employeeList = document.querySelector(".employees__names--list")
     const employeeInfo = document.querySelector(".employees__single--info")
+    
 
     // Add Employee logic later
+    const createEmployee = document.querySelector(".createEmployee")
+    const addEmployeeModal = document.querySelector(".addEmployee")
+    const addEmployeeForm = document.querySelector(".addEmployee__create")
+
+    createEmployee.addEventListener('click', () => {
+        addEmployeeModal.style.display = "flex";
+    })
+
+    addEmployeeModal.addEventListener('click', (e) => {
+        if(e.target.className === 'addEmployee') {
+            addEmployeeModal.style.display = "none";
+        }
+    })
+
+    
 
     //Select Employee Logic
     employeeList.addEventListener('click', (e) => {
@@ -55,6 +72,15 @@
         <div class="employees__single--info">DOB - ${selectedEmployee.dob}</div>
         `
     }
+
+    
+
+
+
+    //const openModal = () => {
+    //    console.log('openModal clicked');
+        
+    //}
 
 
     if(selectedEmployee) renderSingleEmployee();
