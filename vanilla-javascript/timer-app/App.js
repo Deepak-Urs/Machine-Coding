@@ -37,6 +37,15 @@
     }
 
     function timer() {
+        if(sec.value > 60) {
+            min.value++;
+            sec.value = parseInt(sec.value) - 59
+        }
+        if(min.value > 60) {
+            hour.value++;
+            min.value = parseInt(min.value) - 59
+        }
+        
         if(hour.value == 0 && min.value == 0 && sec.value == 0) {
             hour.value = "";
             hour.value = "";
