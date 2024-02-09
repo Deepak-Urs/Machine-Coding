@@ -32,8 +32,11 @@
 
     })
 
-    function stopInterval() {
-
+    function stopInterval(param) {
+        startBtn.innerHTML = param === 'pause' ? "Continue" : "Start";
+        startBtn.style.display = 'initial';
+        stopBtn.style.display = 'none';
+        clearInterval(countdownTimer)
     }
 
     function timer() {
@@ -45,7 +48,7 @@
             hour.value++;
             min.value = parseInt(min.value) - 59
         }
-        
+
         if(hour.value == 0 && min.value == 0 && sec.value == 0) {
             hour.value = "";
             hour.value = "";
@@ -66,4 +69,9 @@
             hour.value = `${hour.value <=10 ? "0" : ""}${hour.value - 1}`
         }
     }
+
+    stopBtn.addEventListener('click', () => {
+        stopInterval('pause')
+    })
+
 })()
