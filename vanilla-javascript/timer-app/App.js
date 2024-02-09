@@ -33,10 +33,16 @@
     })
 
     function stopInterval(param) {
-        startBtn.innerHTML = param === 'pause' ? "Continue" : "Start";
-        startBtn.style.display = 'initial';
-        stopBtn.style.display = 'none';
-        clearInterval(countdownTimer)
+        //if(param !== 'reset') {
+            startBtn.innerHTML = param === 'pause' ? "Continue" : "Start";
+            startBtn.style.display = 'initial';
+            stopBtn.style.display = 'none';
+            clearInterval(countdownTimer)
+        //}
+        //else {
+        //    location.reload();
+        //}
+        
     }
 
     function timer() {
@@ -50,8 +56,8 @@
         }
 
         if(hour.value == 0 && min.value == 0 && sec.value == 0) {
-            hour.value = "";
-            hour.value = "";
+            sec.value = "";
+            min.value = "";
             hour.value = "";
             stopBtn.style.display = 'none';
             startBtn.style.display = 'initial';
@@ -72,6 +78,13 @@
 
     stopBtn.addEventListener('click', () => {
         stopInterval('pause')
+    })
+
+    resetBtn.addEventListener('click', () => {
+        sec.value = "";
+        min.value = "";
+        hour.value = "";
+        stopInterval()
     })
 
 })()
