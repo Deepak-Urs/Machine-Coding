@@ -11,14 +11,14 @@ const Folder = ({ explorer }) => {
                     <span>🗂 {explorer.name}</span>
                 </div>
     
-                {expand && <div style={{paddingLeft: 25}}>
+                <div style={{display: expand ? "block" : "none", paddingLeft: 25}}>
                     {explorer.items.map(exp => {
                         return (
-                            <span>{explorer.isFolder ? <span>🗂</span> : <span>📄</span>}{exp.name}</span>
+                            <Folder key={exp.id} explorer={exp}/>
                         )
                     }
                     )}
-                </div>}
+                </div>
             </div>
         )
     } else {
