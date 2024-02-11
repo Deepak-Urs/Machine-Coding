@@ -17,10 +17,16 @@ const Folder = ({ explorer }) => {
         })
     }
 
-    
-    if(explorer.isFolder) {
+    const onAddFolder = (e) => {
+        if(e.keyCode === 13 && e.target.value) {
+            setShowInput({...showInput, visible: false});
+        }
+    }
+
+
+    if (explorer.isFolder) {
         return (
-            <div style={{marginTop: 5}}>
+            <div style={{ marginTop: 5 }}>
                 <div className="folder" onClick={() => setExpand(!expand)}>
                     <span>🗂 {explorer.name}</span>
 
@@ -29,20 +35,21 @@ const Folder = ({ explorer }) => {
                         <button title="Add new File" onClick={(e) => handleNewFolder(e, false)}>📄 +</button>
                     </div>
                 </div>
-    
-                <div style={{display: expand ? "block" : "none", paddingLeft: 25}}>
+
+                <div style={{ display: expand ? "block" : "none", paddingLeft: 25 }}>
                     {
                         showInput.visible && (<div>
-                            <span>{showInput.isFolder ? "🗂 ": "📄"}</span>
-                            <input type="text" className="inputContainer__input" 
+                            <span>{showInput.isFolder ? "🗂 " : "📄"}</span>
+                            <input type="text" className="inputContainer__input"
                                 autoFocus
-                                onBlur={() => setShowInput({...showInput, visible: false})}
-                                />
+                                onBlur={() => setShowInput({ ...showInput, visible: false })}
+                                onKeyDown={onAddFolder}
+                            />
                         </div>)
                     }
                     {explorer.items.map(exp => {
                         return (
-                            <Folder key={exp.id} explorer={exp}/>
+                            <Folder key={exp.id} explorer={exp} />
                         )
                     }
                     )}
@@ -52,7 +59,7 @@ const Folder = ({ explorer }) => {
     } else {
         return (<span className="file">📄 {explorer.name}</span>)
     }
-    
+
 }
 
 export default Folder
