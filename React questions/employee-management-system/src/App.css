@@ -30,7 +30,31 @@
   border: 1px solid black;
 }
 
+.emp-details__card {
+  width: 70%;
+  border: 1px solid black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.emp-name-card {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 10px;
+  border: 1px solid gray;
+  margin: 5px 10px;
+}
+
+.emp-card__img {
+  width: 250px;
+}
+
 .emp-details__info {
   width: 70%;
   border: 1px solid black;
+}
+
+.emp-card__text {
+  text-align: center;
 }
