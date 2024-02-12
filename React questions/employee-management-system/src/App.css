@@ -1,0 +1,36 @@
+.container {
+  padding: 5px;
+}
+
+.header {
+    border: 1px solid black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    padding: 5px;
+}
+
+.header__title {
+  font-size: xx-large;
+}
+
+.header__btn {
+  display: flex;
+}
+
+.emp-details {
+  height: 500px;
+  border: 1px solid black;
+  display: flex;
+}
+
+.emp-details__list {
+  width: 30%;
+  border: 1px solid black;
+}
+
+.emp-details__info {
+  width: 70%;
+  border: 1px solid black;
+}
