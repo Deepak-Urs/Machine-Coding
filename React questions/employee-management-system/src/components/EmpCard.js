@@ -1,7 +1,7 @@
 import React from 'react'
 
 const EmpCard = ({info}) => {
-    console.log('info', info);
+    //console.log('info', info);
   return (
     <div className='emp-card'>
       <div><img className='emp-card__img' src={`${info.imageUrl}`} /></div>

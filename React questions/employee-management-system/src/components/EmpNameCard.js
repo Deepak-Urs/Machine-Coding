@@ -1,8 +1,8 @@
-const EmpNameCard = ({inputData, openNewEmployee}) => {
+const EmpNameCard = ({inputData, openNewEmployee, deleteEmployeeData}) => {
     return (
-        <div className="emp-name-card" onClick={openNewEmployee}>
-            <span>{inputData.firstName+" "+inputData.lastName}</span>
-            <span>❌</span>
+        <div className="emp-name-card" >
+            <span style={{backgroundColor: 'beige'}} onClick={openNewEmployee}>{inputData.firstName+" "+inputData.lastName}</span>
+            <span onClick={deleteEmployeeData}>❌</span>
         </div>
     )
 }
