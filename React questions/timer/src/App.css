@@ -1,0 +1,45 @@
+.App {
+  text-align: center;
+}
+
+.counter {
+  font-size: xx-large;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+}
+
+.actions {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 40px;
+}
+
+.btn {
+  border: 1px solid;
+  padding: 5px 15px;
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.start {
+  background-color: green;
+}
+
+.pause {
+  background-color: orange;
+}
+
+.reset {
+  background-color: orangered;
+}
+
+input {
+  font-size: 40px;
+  width: 80px;
+  border: none;
+  border-bottom: 2px solid;
+  text-align: end;
+}
