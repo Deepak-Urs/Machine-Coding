@@ -7,11 +7,14 @@
   font-weight: bold;
   display: flex;
   justify-content: center;
+  border: 1px solid;
+  margin: 50px 100px;
+  padding: 50px;
 }
 
 .actions {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   margin-top: 40px;
 }
 
@@ -40,6 +43,27 @@ input {
   font-size: 40px;
   width: 80px;
   border: none;
-  border-bottom: 2px solid;
+  /*border-bottom: 2px solid;*/
   text-align: end;
+  color: gray;
+}
+
+.min-div {
+  display: flex;
+  flex-direction: column;
+}
+
+.sec-div {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  font-size: medium;
+  font-weight:200;
+}
+
+.colon {
+  display: flex;
+  align-items: center;
 }
