@@ -17,7 +17,7 @@ function App() {
   }
 
   const selectedPageHandler = (selectedPage) => {
-    setPage(selectedPage)
+      setPage(selectedPage)
   }
 
   return (
@@ -33,11 +33,11 @@ function App() {
         }
         </div>}
         {products.length > 0 && <div className='pagination'>
-            <span>◀</span>
+            {page > 1 && <span onClick={() => selectedPageHandler(page-1)}>◀</span>}
             {[...Array(products.length/10)].map((_, i) => 
               <span className={page === i+1 ? 'pagination_selected': ''} key={i} onClick={() => selectedPageHandler(i+1)}>{i+1}</span>
             )}
-            <span>▶</span>
+            {page < (products.length/10) && <span onClick={() => selectedPageHandler(page+1)}>▶</span>}
           </div>}
     </div>
   );
