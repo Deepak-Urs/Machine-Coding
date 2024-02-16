@@ -21,3 +21,20 @@
   object-fit: cover;
   margin-bottom: 3px;
 }
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+  margin: 15px 0;
+}
+
+.pagination > span {
+  padding: 10px 20px;
+  border: 1px solid gray;
+  cursor: pointer;
+}
+
+.pagination_selected {
+  background-color: rgb(220, 220, 220);
+}
