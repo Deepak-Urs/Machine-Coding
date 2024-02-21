@@ -77,18 +77,18 @@ getProductsData(0)
 
 paginator.addEventListener('click', (e) => {
     pageNum = e.target.innerHTML
-    if (pageNum === '◀️') {
-        page = page - 1
-        numProductsSkip = ((page-1)*10 - 10).toString() 
-    }
-    else if (pageNum === '▶️') {
-        page = page + 1
-        numProductsSkip = ((page+1)*10 - 10).toString() 
-    }
-    else {
+    //if (pageNum === '◀️') {
+    //    page = page - 1
+    //    numProductsSkip = ((page-1)*10 - 10).toString() 
+    //}
+    //else if (pageNum === '▶️') {
+    //    page = page + 1
+    //    numProductsSkip = ((page+1)*10 - 10).toString() 
+    //}
+    //else {
         page = e.target.innerHTML
         numProductsSkip = ((page)*10 - 10).toString() 
-    }
+    //}
     console.log('page', page);
     console.log('numProductsSkip', numProductsSkip);
    
