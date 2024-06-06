@@ -1,0 +1,141 @@
+*, body {
+    font-family: 'Open Sans', sans-serif;
+    /*margin: 0;
+    padding: 0;*/
+  }
+  
+  .accordion-tabs {
+    width: 100%;
+    max-width: 1200px;
+    margin: 5% auto;
+  }
+  
+  .tabs-wrapper {
+    padding: 0px 25%;
+  }
+
+  .tabs {
+    display: flex;
+    /*justify-content: space-between;*/
+    /*border: 1px solid #ccc;*/
+    /*box-shadow: inset 5px #323232;*/
+    position: relative;
+    box-shadow: 0 6px 8px -4px #323232;
+  }
+  
+  .tab-button {
+    padding: 1% 2%;
+    font-size: 18px;
+    font-weight: bold;
+    border: 1px solid black;
+    background-color: white;
+    cursor: pointer;
+    text-align: center;
+    flex: 1;
+    letter-spacing: 4px;
+    /*height: 143px;
+    width: 29px;*/
+  }
+  
+  .tab-button:last-child {
+    /*border-right: none;*/
+  }
+  
+  .tab-button.active {
+    background-color: #323232;
+    color: #FFFFFF;
+  }
+  
+  .tab-content {
+    display: none;
+    padding: 3% 20%;
+    border-top: none;
+    text-align: center;
+  }
+  
+  .tab-content.active {
+    display: block;
+  }
+  
+  .materials-info {
+    display: flex;
+    justify-content: space-evenly;;
+    /*margin-bottom: 10px;*/
+    /*padding: 2% 20%;*/
+  }
+  
+  .material {
+    text-align: center;
+  }
+
+  .lb {
+    display: flex;
+    justify-content: center;
+    margin: 2%;
+  }
+
+  .line-break {
+    width: 46px;
+    color: #D8D8D8;
+  }
+  
+  .percentage {
+    display: block;
+    font-size: 50px;
+    /*font-weight: bold;*/
+  }
+
+  .sub-title {
+    font-size: 21px;
+  }
+  
+
+  /*  MEDIA Querys for mobile screens */
+  @media (max-width: 767px) {
+    .accordion-tabs {
+      width: 100%;
+    }
+
+    .tabs-wrapper {
+      padding: 0;
+      border: 1px solid black;
+    }
+
+    .tabs {
+      display: block;
+      border: none;
+    }
+  
+    .tab-button {
+      width: 100%;
+      border-right: none;
+      border-bottom: 1px solid #ccc;
+      text-align: left;
+      justify-content: space-between;
+    }
+  
+    .tab-button::after {
+      content: '+';
+      font-size: 20px;
+      transition: transform 0.3s ease;
+    }
+  
+    .tab-button.active::after {
+      content: '-';
+      transform: rotate(180deg);
+    }
+  
+    .tab-content {
+      display: none;
+      overflow: hidden;
+      max-height: 0;
+      padding: 0;
+      transition: max-height 0.3s ease;
+    }
+  
+    .tab-content.active {
+      display: block;
+      max-height: 500px; /* Adjust according to your content */
+    }
+  }
+  
